@@ -22,12 +22,18 @@
     </style>
 </head>
 <body>
-    <h1>CLICK W A S D</h1>
+    <center>
+        <h1>
+            CLICK 
+            <br> 
+            W A S D
+        </h1>
+    </center>
     <div class="circle"></div>
 
     <script>
-        const main = document.querySelector('.circle')
-        main.style['top'] = '300px'
+        const main = document.querySelector('.circle');
+        main.style['top'] = '300px';
         main.style['left'] = '960px';
 
         document.addEventListener('keydown', (event) => {
@@ -43,13 +49,11 @@
                 's': currentTopValue + 3 + 'px',
                 'a': currentLeftValue - 3 + 'px',
                 'd': currentLeftValue + 3  + 'px',
-            }
+            };
 
-            console.log(currentLeftValue, currentTopValue, moved[key])
-            character.style.top = key in ['w', 's'] ? moved[key] : currentTopValue;
-            character.style.left = key in ['a', 'd'] ? moved[key] : currentLeftValue;
-            console.log(character.style.left)
-        }
+            character.style['top'] = ['w', 's'].includes(key) ? moved[key] : currentTopValue;
+            character.style['left'] = ['a', 'd'].includes(key) ? moved[key] : currentLeftValue;
+        };
 
     </script>
 </body>
