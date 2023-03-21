@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        border-radius: 50%;
+        /* Adicionando as propriedades left e bottom */
+        left: 0;
+        bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>CLICK W A S D</h1>
+    <div class="circle"></div>
+
+    <script>
+        const main = document.querySelector('.circle')
+        main.style['top'] = '300px'
+        main.style['left'] = '960px';
+
+        document.addEventListener('keydown', (event) => {
+            move(event.key, main)
+        });
+
+        function move(key, character) {
+
+            currentTopValue =  parseInt(character.style['top']) || 0;
+            currentLeftValue = parseInt(character.style['left']) || 0;
+            const moved = {
+                'w': currentTopValue - 3 + 'px',
+                's': currentTopValue + 3 + 'px',
+                'a': currentLeftValue - 3 + 'px',
+                'd': currentLeftValue + 3  + 'px',
+            }
+
+            console.log(currentLeftValue, currentTopValue, moved[key])
+            character.style.top = key in ['w', 's'] ? moved[key] : currentTopValue;
+            character.style.left = key in ['a', 'd'] ? moved[key] : currentLeftValue;
+            console.log(character.style.left)
+        }
+
+    </script>
+</body>
+</html>
